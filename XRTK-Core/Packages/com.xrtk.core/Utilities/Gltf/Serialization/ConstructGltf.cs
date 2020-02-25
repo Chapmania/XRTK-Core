@@ -207,13 +207,7 @@ namespace XRTK.Utilities.Gltf.Serialization
         {
             if (gltfObject.LoadAsynchronously) { await Awaiters.UnityMainThread; }
 
-            Material material = await CreateMRTKShaderMaterial(gltfObject, gltfMaterial, materialId);
-
-            if (material == null)
-            {
-                Debug.LogWarning("The Mixed Reality Toolkit/Standard Shader was not found. Falling back to Standard Shader");
-                material = await CreateStandardShaderMaterial(gltfObject, gltfMaterial, materialId);
-            }
+            Material material = await CreateStandardShaderMaterial(gltfObject, gltfMaterial, materialId);
 
             if (material == null)
             {
